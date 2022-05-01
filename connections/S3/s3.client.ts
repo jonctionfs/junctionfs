@@ -18,7 +18,7 @@ export class Client {
   }
 
   async presignedGetObject(bucket: string, path: string): Promise<string> {
-    const res = await fetch("http://localhost:8000/presignedGetObject", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/presignedGetObject", {
       method: "POST",
       headers: {
         endPoint: this.#endPoint,
@@ -37,7 +37,7 @@ export class Client {
   }
 
   async removeObject(bucket: string, path: string): Promise<void> {
-    const res = await fetch("http://localhost:8000/removeObject", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/removeObject", {
       method: "POST",
       headers: {
         endPoint: this.#endPoint,
@@ -55,7 +55,7 @@ export class Client {
   }
 
   async presignedPutObject(bucket: string, path: string, expiry: number): Promise<string> {
-    const res = await fetch("http://localhost:8000/presignedPutObject", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/presignedPutObject", {
       method: "POST",
       headers: {
         endPoint: this.#endPoint,
@@ -77,7 +77,7 @@ export class Client {
   }
 
   async putObject(bucket: string, path: string, object: any): Promise<void> {
-    const res = await fetch("http://localhost:8000/putObject", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/putObject", {
       method: "POST",
       headers: {
         endPoint: this.#endPoint,
@@ -96,7 +96,7 @@ export class Client {
   }
 
   async listObjectsV2(bucket: string, path: string, recursive = false): Promise<any> {
-    const res = await fetch("http://localhost:8000/listObjectsV2", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/listObjectsV2", {
       headers: {
         endPoint: this.#endPoint,
         port: "9000",
@@ -115,7 +115,7 @@ export class Client {
   }
 
   async listBuckets(): Promise<any> {
-    const res = await fetch("http://localhost:8000/listBuckets", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/listBuckets", {
       headers: {
         endPoint: this.#endPoint,
         port: "9000",
@@ -132,7 +132,7 @@ export class Client {
   }
 
   async removeObjects(bucket: string, path: string[]): Promise<void> {
-    const res = await fetch("http://localhost:8000/removeObjects", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/removeObjects", {
       method: "POST",
       headers: {
         endPoint: this.#endPoint,
@@ -154,7 +154,7 @@ export class Client {
   }
 
   async copyObject(bucket: string, newPath: string, oldPath: string): Promise<void> {
-    const res = await fetch("http://localhost:8000/copyObject", {
+    const res = await fetch(Deno.env.get("MINIO_SERVER_URI") + "/copyObject", {
       method: "POST",
       headers: {
         endPoint: this.#endPoint,

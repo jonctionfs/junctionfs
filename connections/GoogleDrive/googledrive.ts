@@ -58,7 +58,7 @@ export const createConnection = async (provider: Provider, userId: string) => {
       })
 
       return {
-        contentUrl: 'http://localhost:3002/upload/google-drive/' + res.headers?.get('Location'),
+        contentUrl: Deno.env.get("UPLOAD_SERVER_URL") + '/upload/google-drive/' + res.headers?.get('Location'),
         method: 'POST'
       }
     },
